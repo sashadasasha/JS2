@@ -1,0 +1,29 @@
+.food {
+  display: flex;
+  flex-direction: column;
+
+}
+
+h1 {
+  text-align: center;
+}
+
+.burger,
+.topping,
+.additions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+input {
+  display: flex;
+  justify-content: center;
+  margin-left: 25px;
+}
+
+.info {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
