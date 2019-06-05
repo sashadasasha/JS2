@@ -72,10 +72,8 @@ class ProductItem {
              </div>`
     }
 }
-class Cart {
-    constructor(product) {
-        this.title = product.title;
-        this.price = product.price;
+/*class Cart {
+    constructor() {
         this.ship = 0; // Стоимость доставки
         this._getShip();
         this._getSum();
@@ -92,6 +90,13 @@ class Cart {
         _totalPrice() {} //итоговая стоимость с учетом доставки
     }
 }
+
+class CartItem {
+    constructor(product) {
+        this.title = product.title;
+        this.price = product.price;
+    }
+}*/
 
 const products = new ProductsList();
 
