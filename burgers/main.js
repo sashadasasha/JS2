@@ -12,7 +12,6 @@ class Burger {
 
   countPrice() {
     let result = 0;
-
     if (this.size === 'small') {
       result += 50;
     } else {
@@ -43,7 +42,7 @@ class Burger {
   }
 
   countCalories() {
-    var result = 0;
+    let result = 0;
 
     if (this.size === 'small') {
       result += 20;
@@ -119,8 +118,5 @@ class CreateBurger {
   create() {
     document.querySelector('.btn').addEventListener('click', this.render);
   }
-
-
-
 }
 const bur = new CreateBurger();
