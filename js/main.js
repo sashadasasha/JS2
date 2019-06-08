@@ -154,11 +154,11 @@ class CartList {
                         if (this.cartData[i].id_product == event.target.id) {
                             this.cartData[i].quantity += 1;
                             this._renderCart();
-                        }
+                        } 
                     }
-                }
+                    }
+                })
             })
-        })
     }
 
 
@@ -175,8 +175,7 @@ class CartList {
                         if (this.cartData[i].id_product == event.target.id) {
                             this.cartData[i].quantity -= 1;
                             if (this.cartData[i].quantity === 0) {
-                                let hidInfo = document.querySelector(`#${event.target.id}`);
-                                hidInfo.classList.toggle('hidCart');
+                                this.cartData.splice(i,1);
                             }
                             this._renderCart();
                         }
