@@ -48,6 +48,10 @@ const app = new Vue({
       }
 
     },
+
+    removeCart() {
+
+    },
   },
 
   computed: {
