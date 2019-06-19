@@ -1,80 +1,17 @@
 const API = `https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses`;
 
 const app = new Vue({
-  el: '#app',
-  data: {
-    catalogUrl: `/catalogData.json`,
-    products: [],
-    imgCatalog: `https://placehold.it/200x150`,
-    searchLine: "",
-    isVisibleCart: false,
-    cartList: [],
-    emptyCart: true,
-  },
-  methods: {
-    getJson(url) {
-      return fetch(url)
-        .then(result => result.json())
-        .catch(error => console.log(error))
+    el: '#app',
+    data: {
+        isError: false,
     },
-    addProduct(product) {
-      if (this.emptyCart) {
-        this.emptyCart = false;
-        let cartProd = {
-          ...product
-        };
-        cartProd.quantity = 1;
-        this.cartList.push(cartProd);
-      } else {
-        let find = this.cartList.find(el => el.id_product === product.id_product);
-        if (find) {
-          find.quantity++;
-        } else {
-          let cartProd = {
-            ...product
-          };
-          cartProd.quantity = 1;
-          this.cartList.push(cartProd);
-
-        }
-      }
-    },
-
-    cartVisual() {
-      if (this.isVisibleCart) {
-        this.isVisibleCart = false;
-      } else {
-        this.isVisibleCart = true;
-      }
-
-    },
-
-    removeCart() {
-
-    },
-  },
-
-  computed: {
-    filterGoods() {
-      return this.products.filter(el => {
-        return el.product_name.toLowerCase().indexOf(this.searchLine.toLowerCase()) > -1;
-      })
-    },
-  },
-  mounted() {
-    this.getJson(`${API + this.catalogUrl}`)
-      .then(data => {
-        for (let el of data) {
-          this.products.push(el);
-        }
-      });
-    this.getJson(`getProducts.json`)
-      .then(data => {
-        for (let el of data) {
-          this.products.push(el);
-        }
-      })
-  }
+    methods: {
+        getJson(url){
+            return fetch(url)
+                .then(result => result.json())
+                .catch(error => this.isError = true);
+        },
+    }
 })
 
 // let getRequest = (url) => {

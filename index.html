@@ -11,48 +11,21 @@
 <header>
     <div class="logo">E-shop</div>
     <div class="cart">
-        <form action="#" method="post" class="search-form">
-            <input v-model.lazy = "searchLine" type="text" class="search-field">
-            <button class="btn-search" type="button"  @submit.prevent="filterGoods">
-                <i class="fas fa-search"></i>
-            </button>
-        </form>
-        <button class="btn-cart" type="button" @click="cartVisual">Корзина</button>
-        <div class="cart-block" v-show="isVisibleCart">
-            <div class="empty-cart" v-if="emptyCart">
-                Ваша корзина пуста
-            </div>
-            <div class="product-cart" v-else>
-                <div class="cart-item" v-for="product of cartList" :key="product.id_product">
-                    <img :src="imgCatalog" :alt="product.product_name">
-                    <div class="desc">
-                        <h3>{{product.product_name}}</h3>
-                        <p>{{product.price}}</p>
-                        <p>Quantity {{product.quantity}}</p>
-                    </div>
-                    <div class="times" :id="product.id_product" @click="removeCart">
-                        <i class="far fa-times-circle" ></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <filters ref="filters"></filters>
+        <cart ref="cart"></cart>
     </div>
 </header>
 <main>
-    <div class="products">
-        <div class="product-item" v-for="product of filterGoods" :key="product.id_product">
-            <img :src="imgCatalog" :alt="product.product_name">
-            <div class="desc">
-                <h3>{{product.product_name}}</h3>
-                <p>{{product.price}}</p>
-                <button class="buy-btn" @click="addProduct(product)">Купить</button>
-            </div>
-        </div>
-    </div>
+    <products ref="products"></products>
+    <error ref="error" :is-error="isError" v-show="isError"></error>
 </main>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+<script src="js/ErrorComponent.js"></script>
+<script src ="js/FilterComponent.js"></script>
+<script src="js/ProductsComponent.js"></script>
+<script src="js/CartComponent.js"></script>
 <script defer src="js/main.js"></script>
 </body>
 </html>
